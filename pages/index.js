@@ -1,10 +1,17 @@
 import Head from "next/head";
-import { Grid } from "semantic-ui-react";
+import { useEffect, useState } from "react";
+import { Grid, Loader } from "semantic-ui-react";
 import styles from "../styles/Home.module.css";
 import Content from "./components/comment";
 import Recent from "./components/recent";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(function () {
+    setLoading(false);
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,19 +21,25 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Grid columns="2" divided>
-          <Grid.Row>
-            <Grid.Column>
-              <Content />
-            </Grid.Column>
-            <Grid.Column>
-              <Recent />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        {loading ? (
+          <>
+            <Loader active />
+          </>
+        ) : (
+          <div>
+            <Grid columns="2" divided>
+              <Grid.Row>
+                <Grid.Column>
+                  <Content />
+                </Grid.Column>
+                <Grid.Column>
+                  <Recent />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </div>
+        )}
       </main>
-
-      <footer className={styles.footer}></footer>
     </div>
   );
 }

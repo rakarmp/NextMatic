@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Comment } from "semantic-ui-react";
+import { Form, Button, Comment, Icon } from "semantic-ui-react";
 
 export default function Content() {
   const [comments, setComments] = useState([]);
@@ -21,7 +21,9 @@ export default function Content() {
         <Comment>
           <Comment.Avatar src="https://avatars.githubusercontent.com/u/83684256?v=4" />
           <Comment.Content>
-            <Comment.Author as="a">RakaTrust</Comment.Author>
+            <Comment.Author as="a">
+              RakaTrust <Icon name="terminal" size="small" />
+            </Comment.Author>
             <Comment.Metadata>
               <div>Author</div>
             </Comment.Metadata>
@@ -37,7 +39,9 @@ export default function Content() {
           <Comment key={index}>
             <Comment.Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMRIy5pUVWEC7CmDkvQgeMkxYyhHfmdftpcA&usqp=CAU" />
             <Comment.Content>
-              <Comment.Author as="a">Ini Kamu</Comment.Author>
+              <Comment.Author as="a">
+                Ini Kamu <Icon name="user" size="small" />
+              </Comment.Author>
               <Comment.Metadata>
                 <div>User</div>
               </Comment.Metadata>
